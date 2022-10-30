@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasbex/my_home.dart';
+import 'package:tasbex/test_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHome(),
+      home: TestScreen(),
     );
   }
 }
