@@ -22,55 +22,109 @@ class _DataScreenState extends State<DataScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Align(
+          Positioned(
+              left: 0.w,
+              right: 0.w,
+              bottom: 210.h,
+              // top: 0,
               child: Image.asset(
             "assets/images/tasbex_png-removebg-preview.png",
-            width: 400.w,
+            height: 400.h,
           )),
           Positioned(
-            left: 90.w,
-            right: 90.w,
-            top: 260.h,
-            child: Text(
-              count.toString(),
-              textAlign: TextAlign.end,
-              style: TextStyle(fontSize: 60.sp),
-            ),
-          ),
-          Positioned(
-            left: 0.w,
-            right: 0.w,
-            top: 365.h,
-            child: Container(
-                width: 130.w,
-                height: 130.h,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(100.r)),
-                child: FloatingActionButton(
-                  backgroundColor: Colors.transparent,
-                  onPressed: () {
-                    StorageService.instance.storage.write("count", count >= 999999 ? count = 0 : count++);
-                    setState(() {});
-                  },
-                )),
-          ),
-          Positioned(
-            left: 165.w,
-            right: 10.w,
-            top: 390.w,
-            child: Container(
-                width: 50.w,
-                height: 50.h,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(100.r)),
-                child: FloatingActionButton(
-                  backgroundColor: Colors.transparent,
-                  onPressed: () {
-                    StorageService.instance.storage.write("count", count = 0);
-                    setState(() {});
-                  },
-                )),
-          ),
+              top: 220.h,
+              right: 80.w,
+              child: Container(
+                width: 200.w,
+                height: 300.h,
+                decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.black
+                        )),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            SizedBox(height: 20.h,),
+                            Expanded(
+                              flex: 5,
+                              child: Container(
+                                decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                                child: Text(
+                                  count.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 60.sp),
+                                ),
+                              ),
+                            ),
+                            const Expanded(
+                              flex: 2,
+                              child: SizedBox(),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+                                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
+                                      minimumSize: MaterialStatePropertyAll(Size(20.w, 20.w)),
+                                      maximumSize: MaterialStatePropertyAll(Size(40.w, 40.w))),
+                                  onPressed: () {
+                                    StorageService.instance.storage.write("count", count = 0);
+                                    setState(() {});
+                                  },
+                                  child: Container(color: Colors.transparent),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                          // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                          child: Column(
+                            children: [
+                              Center(
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+                                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
+                                      minimumSize: MaterialStatePropertyAll(Size(50.w, 50.w)),
+                                      maximumSize: MaterialStatePropertyAll(Size(90.w, 90.w))),
+                                  onPressed: () {
+                                    StorageService.instance.storage.write("count", count >= 999999 ? count = 0 : count++);
+                                    setState(() {});
+                                  },
+                                  child: Container(color: Colors.transparent),
+                                ),
+                              ),
+                            ],
+                          )),
+                    )
+                  ],
+                ),
+              ))
         ],
       ),
     );
   }
 }
+
+// ++ button
+// ,
+// ===============================================================
+// count = 0 button
+
+// =====================================
