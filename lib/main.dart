@@ -7,7 +7,7 @@ import 'data_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  runApp(const MyApp());
+  runApp(MyApp(),);
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       ScreenUtilInit(
-        designSize: const Size(360, 760),
+        designSize: const Size(360, 720),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context , child) {

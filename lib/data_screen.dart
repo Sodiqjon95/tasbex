@@ -18,104 +18,105 @@ class _DataScreenState extends State<DataScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark, statusBarColor: Colors.transparent));
+
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark, statusBarColor: Colors.transparent));
     return Scaffold(
       body: Stack(
         children: [
           Positioned(
-              left: 0.w,
-              right: 0.w,
-              bottom: 210.h,
-              // top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: 0,
               child: Image.asset(
             "assets/images/tasbex_png-removebg-preview.png",
-            height: 400.h,
+
           )),
-          Positioned(
-              top: 220.h,
-              right: 80.w,
-              child: Container(
-                width: 200.w,
-                height: 300.h,
-                decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                          color: Colors.black
-                        )),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SizedBox(height: 20.h,),
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                                child: Text(
-                                  count.toString(),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 60.sp),
-                                ),
+          Padding(
+            padding:  EdgeInsets.only(top: 160.h,right: 80.w,bottom: 120.h,left: 80.w),
+            child: Container(
+              width: 300,
+              height:400,
+              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        color: Colors.black
+                      )),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          SizedBox(height: 20.h,),
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                              child: Text(
+                                count.toString(),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 60),
                               ),
                             ),
-                            const Expanded(
-                              flex: 2,
-                              child: SizedBox(),
+                          ),
+                          const Expanded(
+                            flex: 2,
+                            child: SizedBox(),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+                                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+                                    minimumSize: MaterialStatePropertyAll(Size(20, 20)),
+                                    maximumSize: MaterialStatePropertyAll(Size(40, 40))),
+                                onPressed: () {
+                                  StorageService.instance.storage.write("count", count = 0);
+                                  setState(() {});
+                                },
+                                child: Container(color: Colors.transparent),
+                              ),
                             ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
-                                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
-                                      minimumSize: MaterialStatePropertyAll(Size(20.w, 20.w)),
-                                      maximumSize: MaterialStatePropertyAll(Size(40.w, 40.w))),
-                                  onPressed: () {
-                                    StorageService.instance.storage.write("count", count = 0);
-                                    setState(() {});
-                                  },
-                                  child: Container(color: Colors.transparent),
-                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                        // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+                                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+                                    minimumSize: MaterialStatePropertyAll(Size(50, 50)),
+                                    maximumSize: MaterialStatePropertyAll(Size(90, 90))),
+                                onPressed: () {
+                                  StorageService.instance.storage.write("count", count >= 999999 ? count = 0 : count++);
+                                  setState(() {});
+                                },
+                                child: Container(color: Colors.transparent),
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                          // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                          child: Column(
-                            children: [
-                              Center(
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
-                                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
-                                      minimumSize: MaterialStatePropertyAll(Size(50.w, 50.w)),
-                                      maximumSize: MaterialStatePropertyAll(Size(90.w, 90.w))),
-                                  onPressed: () {
-                                    StorageService.instance.storage.write("count", count >= 999999 ? count = 0 : count++);
-                                    setState(() {});
-                                  },
-                                  child: Container(color: Colors.transparent),
-                                ),
-                              ),
-                            ],
-                          )),
-                    )
-                  ],
-                ),
-              ))
+                        )),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
