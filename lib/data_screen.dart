@@ -33,84 +33,81 @@ class _DataScreenState extends State<DataScreen> {
             child: SizedBox(
               width: 200.w,
               height: 280.h,
-              child: Container(
-                decoration: BoxDecoration(border:  Border.all(color:  Colors.black)),
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 6,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                           const Expanded(
-                            flex: 3,
-                            child: SizedBox(),
-                          ),
-                          Expanded(
-                            flex: 4,
-                            child: Text(
-                              count.toString(),
-                              textAlign: TextAlign.end,
-                              style: TextStyle(fontSize: 55.sp),
-                            ),
-                          ),
-                          const Expanded(
-                            flex: 3,
-                            child: SizedBox(),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                              CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                child: IconButton(
-                                  color: Colors.black,
-                                  onPressed: () {
-                                    StorageService.instance.storage.write("count", count = 0);
-                                    setState(() {});
-                                  },
-                                  icon: const Icon(Icons.restart_alt),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                            ]),
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child:
-                      Padding(
-                        padding: const EdgeInsets.only(right: 50,left: 50),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 100,
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
-                                shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
-                                minimumSize: MaterialStatePropertyAll(Size(50.w, 50.h)),
-                                maximumSize: MaterialStatePropertyAll(Size(100.w, 100.h))),
-                            onPressed: () {
-                              StorageService.instance.storage.write("count", count >= 100000 ? count = 0 : count++);
-                              setState(() {});
-                            },
-                            child: Container(color: Colors.transparent),
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 6,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                         const Expanded(
+                          flex: 3,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Text(
+                            count.toString(),
+                            textAlign: TextAlign.end,
+                            style: TextStyle(fontSize: 55.sp),
                           ),
                         ),
-                      ),
-
+                        const Expanded(
+                          flex: 3,
+                          child: SizedBox(),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              child: IconButton(
+                                color: Colors.black,
+                                onPressed: () {
+                                  StorageService.instance.storage.write("count", count = 0);
+                                  setState(() {});
+                                },
+                                icon: const Icon(Icons.restart_alt),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                          ]),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                      ],
                     ),
-                  SizedBox(height: 10.h,)
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child:
+                    Padding(
+                      padding: const EdgeInsets.only(right: 50,left: 50),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 100,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+                              shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
+                              minimumSize: MaterialStatePropertyAll(Size(50.w, 50.h)),
+                              maximumSize: MaterialStatePropertyAll(Size(100.w, 100.h))),
+                          onPressed: () {
+                            StorageService.instance.storage.write("count", count >= 100000 ? count = 0 : count++);
+                            setState(() {});
+                          },
+                          child: Container(color: Colors.transparent),
+                        ),
+                      ),
+                    ),
+
+                  ),
+                SizedBox(height: 10.h,)
+                ],
               ),
             ),
           )
