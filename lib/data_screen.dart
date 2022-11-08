@@ -24,7 +24,7 @@ class _DataScreenState extends State<DataScreen> {
         children: [
           Center(
             child: Image.asset(
-              "assets/images/tasbex_png-removebg-preview.png",
+              "assets/images/tasbeeh.png",
               width: 400.w,
               height: 350.h,
             ),
