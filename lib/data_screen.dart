@@ -18,102 +18,99 @@ class _DataScreenState extends State<DataScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark, statusBarColor: Colors.transparent));
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark, statusBarColor: Colors.transparent));
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
-              child: Image.asset(
-            "assets/images/tasbex_png-removebg-preview.png",
-
-          )),
-          Padding(
-            padding:  EdgeInsets.only(top: 160.h,right: 80.w,bottom: 120.h,left: 80.w),
-            child: Container(
-              width: 300,
-              height:400,
-              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.black
-                      )),
+          Center(
+            child: Image.asset(
+              "assets/images/tasbex_png-removebg-preview.png",
+              width: 400.w,
+              height: 350.h,
+            ),
+          ),
+          Center(
+            child: SizedBox(
+              width: 200.w,
+              height: 280.h,
+              child: Container(
+                decoration: BoxDecoration(border:  Border.all(color:  Colors.black)),
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 6,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(height: 20.h,),
+                           const Expanded(
+                            flex: 3,
+                            child: SizedBox(),
+                          ),
                           Expanded(
-                            flex: 5,
-                            child: Container(
-                              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                              child: Text(
-                                count.toString(),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 60),
-                              ),
+                            flex: 4,
+                            child: Text(
+                              count.toString(),
+                              textAlign: TextAlign.end,
+                              style: TextStyle(fontSize: 55.sp),
                             ),
                           ),
                           const Expanded(
-                            flex: 2,
+                            flex: 3,
                             child: SizedBox(),
                           ),
                           Expanded(
                             flex: 2,
-                            child: Container(
-                              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
-                                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-                                    minimumSize: MaterialStatePropertyAll(Size(20, 20)),
-                                    maximumSize: MaterialStatePropertyAll(Size(40, 40))),
-                                onPressed: () {
-                                  StorageService.instance.storage.write("count", count = 0);
-                                  setState(() {});
-                                },
-                                child: Container(color: Colors.transparent),
+                            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                child: IconButton(
+                                  color: Colors.black,
+                                  onPressed: () {
+                                    StorageService.instance.storage.write("count", count = 0);
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(Icons.restart_alt),
+                                ),
                               ),
-                            ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                            ]),
+                          ),
+                          SizedBox(
+                            height: 10.h,
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                        // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-                        child: Column(
-                          children: [
-                            Center(
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
-                                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-                                    minimumSize: MaterialStatePropertyAll(Size(50, 50)),
-                                    maximumSize: MaterialStatePropertyAll(Size(90, 90))),
-                                onPressed: () {
-                                  StorageService.instance.storage.write("count", count >= 999999 ? count = 0 : count++);
-                                  setState(() {});
-                                },
-                                child: Container(color: Colors.transparent),
-                              ),
-                            ),
-                          ],
-                        )),
-                  )
-                ],
+                    Expanded(
+                      flex: 3,
+                      child:
+                      Padding(
+                        padding: const EdgeInsets.only(right: 50,left: 50),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 100,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: const MaterialStatePropertyAll(Colors.transparent),
+                                shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.r))),
+                                minimumSize: MaterialStatePropertyAll(Size(50.w, 50.h)),
+                                maximumSize: MaterialStatePropertyAll(Size(100.w, 100.h))),
+                            onPressed: () {
+                              StorageService.instance.storage.write("count", count >= 100000 ? count = 0 : count++);
+                              setState(() {});
+                            },
+                            child: Container(color: Colors.transparent),
+                          ),
+                        ),
+                      ),
+
+                    ),
+                  SizedBox(height: 10.h,)
+                  ],
+                ),
               ),
             ),
           )
@@ -122,10 +119,3 @@ class _DataScreenState extends State<DataScreen> {
     );
   }
 }
-
-// ++ button
-// ,
-// ===============================================================
-// count = 0 button
-
-// =====================================
