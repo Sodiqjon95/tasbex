@@ -14,12 +14,13 @@ class DataScreen extends StatefulWidget {
 }
 
 class _DataScreenState extends State<DataScreen> {
-  int count = 0;
+  int count = StorageService.instance.storage.read('count') ?? 0;
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark, statusBarColor: Colors.transparent));
     return Scaffold(
+      backgroundColor: Colors.lightGreenAccent,
       body: Stack(
         children: [
           Center(
@@ -41,14 +42,14 @@ class _DataScreenState extends State<DataScreen> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                         const Expanded(
+                        const Expanded(
                           flex: 3,
                           child: SizedBox(),
                         ),
                         Expanded(
                           flex: 4,
                           child: Text(
-                            count.toString(),
+                            StorageService.instance.storage.read('count').toString() ?? count.toString(),
                             textAlign: TextAlign.end,
                             style: TextStyle(fontSize: 55.sp),
                           ),
@@ -84,9 +85,8 @@ class _DataScreenState extends State<DataScreen> {
                   ),
                   Expanded(
                     flex: 3,
-                    child:
-                    Padding(
-                      padding: const EdgeInsets.only(right: 50,left: 50),
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 50, left: 50),
                       child: CircleAvatar(
                         backgroundColor: Colors.transparent,
                         radius: 100,
@@ -104,9 +104,10 @@ class _DataScreenState extends State<DataScreen> {
                         ),
                       ),
                     ),
-
                   ),
-                SizedBox(height: 10.h,)
+                  SizedBox(
+                    height: 10.h,
+                  )
                 ],
               ),
             ),
